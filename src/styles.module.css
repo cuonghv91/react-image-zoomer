@@ -1,9 +1,30 @@
 /* add css module styles here (optional) */
 
-.test {
-  margin: 2em;
-  padding: 0.5em;
-  border: 2px solid #000;
-  font-size: 2em;
-  text-align: center;
+.imageZoomer {
+  position: relative;
+}
+
+.imageContainer {
+  width: 100%;
+}
+
+.imageContainer > img {
+  width: 100%;
+  cursor: pointer;
+  position: relative;
+}
+
+.zoomScreen {
+  position: absolute;
+  top: 0px;
+  background: red;
+  z-index: 99;
+  left: 100%;
+}
+
+.pointer {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  border: 1px yellow solid;
 }
