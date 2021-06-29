@@ -9,7 +9,7 @@ interface ReactImageZoomer {
 }
 
 export const ReactImageZoomer: React.FC<ReactImageZoomer> = ({
-  imgUrl,
+  imgUrl = '',
   alt,
   zoomSize = '300px',
   pointerSize = '50px'
@@ -115,12 +115,18 @@ export const ReactImageZoomer: React.FC<ReactImageZoomer> = ({
         onMouseMove={onHandleMouseMove}
         onMouseLeave={onHandleMouseLeave}
       >
-        <img src={imgUrl} alt={alt} />
-        <div
-          ref={pointerRef}
-          className={styles.pointer}
-          style={pointerStyle(pointerSize, pointerX, pointerY)}
-        />
+        {imgUrl.length === 0 ? (
+          <span>You need to provide image url</span>
+        ) : (
+          <img src={imgUrl} alt={alt} />
+        )}
+        {toggleZoomer && (
+          <div
+            ref={pointerRef}
+            className={styles.pointer}
+            style={pointerStyle(pointerSize, pointerX, pointerY)}
+          />
+        )}
       </div>
       {toggleZoomer && (
         <div className={styles.zoomScreen} style={zoomScreenStyle(zoomSize)}>
