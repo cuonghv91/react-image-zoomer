@@ -1,7 +1,7 @@
-import { ExampleComponent } from '.'
+import { ReactImageZoomer } from '.'
 
-describe('ExampleComponent', () => {
+describe('ReactImageZoomer', () => {
   it('is truthy', () => {
-    expect(ExampleComponent).toBeTruthy()
+    expect(ReactImageZoomer).toBeTruthy()
   })
 })

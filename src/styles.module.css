@@ -17,9 +17,9 @@
 .zoomScreen {
   position: absolute;
   top: 0px;
-  background: red;
   z-index: 99;
   left: 100%;
+  overflow: hidden;
 }
 
 .pointer {
@@ -27,4 +27,14 @@
   left: 0px;
   top: 0px;
   border: 1px yellow solid;
+}
+
+.imageZoomed {
+  width: 100%;
+}
+
+.zoomedImgContainer {
+  position: absolute;
+  left: 0px;
+  top: 0px;
 }
