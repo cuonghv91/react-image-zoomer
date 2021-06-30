@@ -15,12 +15,12 @@ npm install --save react-image-zoomer
 ```tsx
 import React, { Component } from 'react'
 
-import MyComponent from 'react-image-zoomer'
+import ReactImageZoomer from 'react-image-zoomer'
 import 'react-image-zoomer/dist/index.css'
 
 class Example extends Component {
   render() {
-    return <MyComponent />
+    return <ReactImageZoomer />
   }
 }
 ```
