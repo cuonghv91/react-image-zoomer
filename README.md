@@ -1,4 +1,4 @@
-# react-image-zoomer
+# react-image-zoomer-ch
 
 
 [![NPM](https://img.shields.io/npm/v/react-image-zoomer.svg)](https://www.npmjs.com/package/react-image-zoomer) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
@@ -12,7 +12,7 @@ https://build-cuonghv911.vercel.app
 ## Install
 
 ```bash
-npm install --save react-image-zoomer
+npm install --save react-image-zoomer-ch
 ```
 
 ## Usage
@@ -20,8 +20,8 @@ npm install --save react-image-zoomer
 ```tsx
 import React, { Component } from 'react'
 
-import ReactImageZoomer from 'react-image-zoomer'
-import 'react-image-zoomer/dist/index.css'
+import ReactImageZoomer from 'react-image-zoomer-ch'
+import 'react-image-zoomer-ch/dist/index.css'
 
 class Example extends Component {
   render() {
