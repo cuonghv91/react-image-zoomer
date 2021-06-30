@@ -3,6 +3,12 @@
 
 [![NPM](https://img.shields.io/npm/v/react-image-zoomer.svg)](https://www.npmjs.com/package/react-image-zoomer) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+## Demo
+
+```bash
+https://build-cuonghv911.vercel.app
+```
+
 ## Install
 
 ```bash
