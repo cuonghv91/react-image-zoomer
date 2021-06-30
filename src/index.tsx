@@ -18,25 +18,14 @@ export const ReactImageZoomer: React.FC<ReactImageZoomer> = ({
   const pointerRef = React.useRef<HTMLDivElement>(null)
   const [pointerX, setPointerX] = React.useState<number>(0)
   const [pointerY, setPointerY] = React.useState<number>(0)
-  const [imageHeight, setImageHeight] = React.useState<number | undefined>(0)
   const [imageWidth, setImageWidth] = React.useState<number | undefined>(0)
-  const [offsetPointerWidth, setOffsetPointerWidth] = React.useState<number>(0)
   const pointerSizeValue = Number(pointerSize.split('px')[0])
   const zoomSizeValue = Number(zoomSize.split('px')[0])
   const [toggleZoomer, setToggleZoomer] = React.useState<boolean>(false)
 
   React.useEffect(() => {
-    setImageHeight(containerRef.current?.offsetHeight)
     setImageWidth(containerRef.current?.offsetWidth)
-
-    if (pointerRef.current?.offsetWidth && pointerRef.current?.clientWidth) {
-      setOffsetPointerWidth(
-        Math.abs(
-          pointerRef.current?.offsetWidth - pointerRef.current?.clientWidth
-        )
-      )
-    }
-  }, [containerRef, pointerRef])
+  }, [containerRef])
 
   const zoomScreenStyle = (zoomSize: string) => {
     return {
@@ -70,42 +59,17 @@ export const ReactImageZoomer: React.FC<ReactImageZoomer> = ({
     }
   }
 
-  const onHandleMouseLeave = () => {
-    setToggleZoomer(false)
-  }
+  const onHandleMouseLeave = () => setToggleZoomer(false)
 
   const onHandleMouseMove = (
     evt: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
+    setToggleZoomer(true)
     const halfPointerSize = pointerSizeValue / 2
     const moveX = evt.clientX - evt.currentTarget.offsetLeft
     const moveY = evt.clientY - evt.currentTarget.offsetTop
-
-    setToggleZoomer(true)
-
-    if (moveX < halfPointerSize && moveY > halfPointerSize) {
-      setPointerX(0)
-      setPointerY(moveY - halfPointerSize - offsetPointerWidth)
-    }
-
-    if (moveX > halfPointerSize && moveY < halfPointerSize) {
-      setPointerX(moveX - halfPointerSize - offsetPointerWidth)
-      setPointerY(0)
-    }
-
-    if (moveX >= halfPointerSize && moveY >= halfPointerSize) {
-      setPointerX(moveX - halfPointerSize)
-      setPointerY(moveY - halfPointerSize)
-    }
-
-    if (imageHeight && imageWidth) {
-      if (moveY > imageHeight - halfPointerSize) {
-        setPointerY(imageHeight - 2 * halfPointerSize - offsetPointerWidth)
-      }
-      if (moveX > imageWidth - halfPointerSize) {
-        setPointerX(imageWidth - 2 * halfPointerSize - offsetPointerWidth)
-      }
-    }
+    setPointerX(moveX - halfPointerSize)
+    setPointerY(moveY - halfPointerSize)
   }
 
   return (
@@ -114,14 +78,16 @@ export const ReactImageZoomer: React.FC<ReactImageZoomer> = ({
         className={styles.imageContainer}
         onMouseMove={onHandleMouseMove}
         onMouseLeave={onHandleMouseLeave}
+        data-testid='img-container'
       >
         {imgUrl.length === 0 ? (
-          <span>You need to provide image url</span>
+          <span data-testid='message'>You need to provide image url</span>
         ) : (
-          <img src={imgUrl} alt={alt} />
+          <img src={imgUrl} alt={alt} data-testid='original-image' />
         )}
         {toggleZoomer && (
           <div
+            data-testid='pointer'
             ref={pointerRef}
             className={styles.pointer}
             style={pointerStyle(pointerSize, pointerX, pointerY)}
@@ -129,18 +95,24 @@ export const ReactImageZoomer: React.FC<ReactImageZoomer> = ({
         )}
       </div>
       {toggleZoomer && (
-        <div className={styles.zoomScreen} style={zoomScreenStyle(zoomSize)}>
-          <div
-            className={styles.zoomedImgContainer}
-            style={zoomedImageContainerStyle(
-              (zoomSizeValue * (imageWidth !== undefined ? imageWidth : 1)) /
-                pointerSizeValue,
-              (-pointerX * zoomSizeValue) / pointerSizeValue,
-              (-pointerY * zoomSizeValue) / pointerSizeValue
-            )}
-          >
-            <img src={imgUrl} alt={alt} className={styles.imageZoomed} />
-          </div>
+        <div
+          className={styles.zoomScreen}
+          style={zoomScreenStyle(zoomSize)}
+          data-testid='zoom-part'
+        >
+          {imageWidth !== undefined && (
+            <div
+              className={styles.zoomedImgContainer}
+              data-testid='zoomed-core'
+              style={zoomedImageContainerStyle(
+                (zoomSizeValue * imageWidth) / pointerSizeValue,
+                (-pointerX * zoomSizeValue) / pointerSizeValue,
+                (-pointerY * zoomSizeValue) / pointerSizeValue
+              )}
+            >
+              <img src={imgUrl} alt={alt} className={styles.imageZoomed} />
+            </div>
+          )}
         </div>
       )}
     </div>

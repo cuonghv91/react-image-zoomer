@@ -6,12 +6,16 @@
 
 .imageContainer {
   width: 100%;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
 }
 
 .imageContainer > img {
   width: 100%;
   cursor: pointer;
   position: relative;
+  display: block;
 }
 
 .zoomScreen {
@@ -26,7 +30,8 @@
   position: absolute;
   left: 0px;
   top: 0px;
-  border: 1px yellow solid;
+  border: 1px red solid;
+  cursor: pointer;
 }
 
 .imageZoomed {
