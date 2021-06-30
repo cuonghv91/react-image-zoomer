@@ -1,6 +1,6 @@
 # react-image-zoomer-ch
 
-This React packages helps you zoom in a part of an image whenever user mouse over it. It is useful for your e-commerce project.
+This React package helps you zoom in a part of an image whenever user mouse over it. It is useful for your e-commerce project.
 
 [![NPM](https://img.shields.io/npm/v/react-image-zoomer.svg)](https://www.npmjs.com/package/react-image-zoomer) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
