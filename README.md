@@ -20,7 +20,16 @@ import 'react-image-zoomer/dist/index.css'
 
 class Example extends Component {
   render() {
-    return <ReactImageZoomer />
+    return (
+      <div style={{ width: 500 }}>
+        <ReactImageZoomer
+          imgUrl='https://i.ibb.co/h1C0vFX/ngoc-trinh.jpg'
+          alt='demo'
+          zoomSize='300px'
+          pointerSize='50px'
+        />
+      </div>
+    )
   }
 }
 ```
