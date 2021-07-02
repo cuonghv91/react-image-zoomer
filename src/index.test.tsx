@@ -2,7 +2,6 @@ import React from 'react'
 import { ReactImageZoomer } from '.'
 import { render, screen, fireEvent, cleanup } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
-import renderer from 'react-test-renderer'
 
 describe('ReactImageZoomer component with default props', () => {
   it("should display a message: 'You need to provide image url'", () => {

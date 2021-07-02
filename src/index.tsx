@@ -1,5 +1,47 @@
 import * as React from 'react'
-import styles from './styles.module.css'
+import { StyleSheet, css } from 'aphrodite'
+
+const styles = StyleSheet.create({
+  imageZoomer: {
+    position: 'relative'
+  },
+  imageContainer: {
+    width: '100%',
+    overflow: 'hidden',
+    position: 'relative',
+    zIndex: 2
+  },
+  actualImage: {
+    width: '100%',
+    cursor: 'pointer',
+    position: 'relative',
+    display: 'block'
+  },
+  zoomScreen: {
+    position: 'absolute',
+    top: '0px',
+    zIndex: 99,
+    left: '100%',
+    overflow: 'hidden'
+  },
+  pointer: {
+    position: 'absolute',
+    left: '0px',
+    top: '0px',
+    border: '1px red solid',
+    cursor: 'pointer'
+  },
+
+  imageZoomed: {
+    width: '100%'
+  },
+
+  zoomedImgContainer: {
+    position: 'absolute',
+    left: '0px',
+    top: '0px'
+  }
+})
 
 interface ReactImageZoomer {
   imgUrl?: string
@@ -73,9 +115,9 @@ export const ReactImageZoomer: React.FC<ReactImageZoomer> = ({
   }
 
   return (
-    <div ref={containerRef} className={styles.imageZoomer}>
+    <div ref={containerRef} className={css(styles.imageZoomer)}>
       <div
-        className={styles.imageContainer}
+        className={css(styles.imageContainer)}
         onMouseMove={onHandleMouseMove}
         onMouseLeave={onHandleMouseLeave}
         data-testid='img-container'
@@ -83,26 +125,31 @@ export const ReactImageZoomer: React.FC<ReactImageZoomer> = ({
         {imgUrl.length === 0 ? (
           <span data-testid='message'>You need to provide image url</span>
         ) : (
-          <img src={imgUrl} alt={alt} data-testid='original-image' />
+          <img
+            src={imgUrl}
+            alt={alt}
+            data-testid='original-image'
+            className={css(styles.actualImage)}
+          />
         )}
         {toggleZoomer && (
           <div
             data-testid='pointer'
             ref={pointerRef}
-            className={styles.pointer}
+            className={css(styles.pointer)}
             style={pointerStyle(pointerSize, pointerX, pointerY)}
           />
         )}
       </div>
       {toggleZoomer && (
         <div
-          className={styles.zoomScreen}
+          className={css(styles.zoomScreen)}
           style={zoomScreenStyle(zoomSize)}
           data-testid='zoom-part'
         >
           {imageWidth !== undefined && (
             <div
-              className={styles.zoomedImgContainer}
+              className={css(styles.zoomedImgContainer)}
               data-testid='zoomed-core'
               style={zoomedImageContainerStyle(
                 (zoomSizeValue * imageWidth) / pointerSizeValue,
@@ -110,7 +157,7 @@ export const ReactImageZoomer: React.FC<ReactImageZoomer> = ({
                 (-pointerY * zoomSizeValue) / pointerSizeValue
               )}
             >
-              <img src={imgUrl} alt={alt} className={styles.imageZoomed} />
+              <img src={imgUrl} alt={alt} className={css(styles.imageZoomed)} />
             </div>
           )}
         </div>

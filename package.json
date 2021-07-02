@@ -1,5 +1,5 @@
 {
-  "name": "react-image-zoomer",
+  "name": "react-image-zoomer-ch",
   "version": "1.0.0",
   "description": "Made with create-react-library",
   "author": "cuonghv91",
@@ -65,5 +65,7 @@
   "files": [
     "dist"
   ],
-  "dependencies": {}
+  "dependencies": {
+    "aphrodite": "^2.4.0"
+  }
 }
