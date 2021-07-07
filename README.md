@@ -41,7 +41,7 @@ class Example extends Component {
 ```
 
 | Props  | Type | Default value | Description |
-| ------------- | ------------- |
+| ------------- | ------------- |------------- |------------- |
 | imgUrl  | string | empty string | Url of the image you want to zoom  |
 | alt  | string | undefined | alt of the image, for SEO purpose maybe  |
 | zoomSize  | string  | 300px | Displayed zoomming part size  |
