@@ -40,6 +40,11 @@ class Example extends Component {
 }
 ```
 
+| First Header  | Second Header |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
+
 ## License
 
 MIT © [cuonghv91](https://github.com/cuonghv91)
