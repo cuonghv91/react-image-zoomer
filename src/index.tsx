@@ -115,9 +115,12 @@ export const ReactImageZoomer: React.FC<ReactImageZoomer> = ({
   }
 
   return (
-    <div ref={containerRef} className={css(styles.imageZoomer)}>
+    <div
+      ref={containerRef}
+      className={`image-zoomer ${css(styles.imageZoomer)}`}
+    >
       <div
-        className={css(styles.imageContainer)}
+        className={`image-container ${css(styles.imageContainer)}`}
         onMouseMove={onHandleMouseMove}
         onMouseLeave={onHandleMouseLeave}
         data-testid='img-container'
@@ -129,27 +132,29 @@ export const ReactImageZoomer: React.FC<ReactImageZoomer> = ({
             src={imgUrl}
             alt={alt}
             data-testid='original-image'
-            className={css(styles.actualImage)}
+            className={`actual-image ${css(styles.actualImage)}`}
           />
         )}
         {toggleZoomer && (
           <div
             data-testid='pointer'
             ref={pointerRef}
-            className={css(styles.pointer)}
+            className={`pointer ${css(styles.pointer)}`}
             style={pointerStyle(pointerSize, pointerX, pointerY)}
           />
         )}
       </div>
       {toggleZoomer && (
         <div
-          className={css(styles.zoomScreen)}
+          className={`zoom-screen ${css(styles.zoomScreen)}`}
           style={zoomScreenStyle(zoomSize)}
           data-testid='zoom-part'
         >
           {imageWidth !== undefined && (
             <div
-              className={css(styles.zoomedImgContainer)}
+              className={`zoom-image-container ${css(
+                styles.zoomedImgContainer
+              )}`}
               data-testid='zoomed-core'
               style={zoomedImageContainerStyle(
                 (zoomSizeValue * imageWidth) / pointerSizeValue,
@@ -157,7 +162,11 @@ export const ReactImageZoomer: React.FC<ReactImageZoomer> = ({
                 (-pointerY * zoomSizeValue) / pointerSizeValue
               )}
             >
-              <img src={imgUrl} alt={alt} className={css(styles.imageZoomed)} />
+              <img
+                src={imgUrl}
+                alt={alt}
+                className={`image-zoomed ${css(styles.imageZoomed)}`}
+              />
             </div>
           )}
         </div>
