@@ -40,10 +40,13 @@ class Example extends Component {
 }
 ```
 
-| First Header  | Second Header |
+| Props  | Type | Default value | Description |
 | ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+| imgUrl  | string | empty string | Url of the image you want to zoom  |
+| alt  | string | undefined | alt of the image, for SEO purpose maybe  |
+| zoomSize  | string  | 300px | Displayed zoomming part size  |
+| pointerSize  | string  | 50px | Pointer size  |
+| children  | React Component  | undefined | Children inside component, used for adding stickers layer  |
 
 ## License
 
