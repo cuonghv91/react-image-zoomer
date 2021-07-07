@@ -23,7 +23,6 @@ npm install --save react-image-zoomer-ch
 import React, { Component } from 'react'
 
 import { ReactImageZoomer } from 'react-image-zoomer-ch'
-import 'react-image-zoomer-ch/dist/index.css'
 
 class Example extends Component {
   render() {
